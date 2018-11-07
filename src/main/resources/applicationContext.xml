@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:aop="http://www.springframework.org/schema/aop"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+          http://www.springframework.org/schema/context
+          http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <import resource="classpath*:spring/spring-*.xml"/>
+    <context:property-placeholder location="classpath*:props/redis.properties" />
+    <context:component-scan base-package="com.spring.test*"/>
+    <import resource="classpath*:dubbo/dubbo-*.xml"/>
+    <context:annotation-config />
+
+    <bean id="dozerBeanMapper" class="com.spring.test.domain.DozerBeanMapperFactoryBean" init-method="init">
+        <property name="mappingFiles">
+            <list>
+                <value>config/dozer-bean-mappings.xml</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="dozerBeanUtil" class="com.spring.test.domain.ZDozerBeanUtil">
+        <property name="dozerBeanMapper" ref="dozerBeanMapper"/>
+    </bean>
+    <bean id="confProperties"
+          class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="ignoreResourceNotFound" value="true"/>
+        <property name="locations">
+            <list>
+                <value>classpath*:/props/conf.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="jedisClientPool" class="com.spring.test.redis.JedisClientPool">
+        <property name="jedisPool" ref="jedisPool"/>
+    </bean>
+    <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+        <constructor-arg name="host" value="127.0.0.1"/>
+        <constructor-arg name="port" value="6379"/>
+    </bean>
+
+
+
+    <!--<bean id="userManagerImpl"  class="com.spring.test.manager.UserManagerImpl">
+    </bean>-->
+    <!--<bean id="userServiceImpl" class="com.spring.test.service.UserServiceImpl">
+    </bean>-->
+
+
+    <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxIdle" value="300" />
+        <property name="maxTotal" value="600" />
+        <property name="maxWaitMillis" value="1000" />
+        <property name="testOnBorrow" value="true" />
+    </bean>
+
+    <bean id="connectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+        <property name="hostName" value="127.0.0.1"/>
+        <property name="port" value="6379"/>
+        <!--<property name="password" value="${redis.pass}"/>-->
+        <!--<property name="poolConfig" ref="poolConfig"/>-->
+    </bean>
+
+    <bean id="stringSerializer" class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
+
+    <bean id="hashSerializer" class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer"/>
+
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
+        <property name="connectionFactory" ref="connectionFactory" />
+        <property name="keySerializer" ref="stringSerializer"/>
+        <property name="valueSerializer" ref="stringSerializer"/>
+        <property name="hashKeySerializer" ref="stringSerializer" />
+        <property name="hashValueSerializer" ref="hashSerializer"/>
+    </bean>
+
+    <bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
+        <property name="caches">
+            <set>
+                <bean class="com.spring.test.redis.RedisCache">
+                    <property name="redisTemplate" ref="redisTemplate" />
+                    <property name="name" value="isu"/>
+                </bean>
+            </set>
+        </property>
+    </bean>
+
+    <bean id="jmsFactory" class="org.apache.activemq.pool.PooledConnectionFactory" destroy-method="stop">
+        <property name="connectionFactory">
+            <bean class="org.apache.activemq.ActiveMQConnectionFactory">
+                <property name="brokerURL">
+                    <value>tcp://127.0.0.1:61616</value>
+                </property>
+            </bean>
+        </property>
+        <property name="maxConnections" value="100"></property>
+    </bean>
+
+
+    <bean id="destination" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg index="0" value="queue_temp"></constructor-arg>
+    </bean>
+
+
+
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <!-- 3.1 注入jmsFactory -->
+        <property name="connectionFactory" ref="jmsFactory"></property>
+
+
+        <property name="defaultDestination" ref="destination" />
+    </bean>
+
+
+    <bean id="springProducer" class="com.spring.test.activemq.SpringPublisher">
+        <property name="jmsTemplate" ref="jmsTemplate"/>
+    </bean>
+
+
+    <bean id="springConsumer" class="com.spring.test.activemq.SpringConsumer">
+        <property name="jmsTemplate" ref="jmsTemplate"></property>
+    </bean>
+
+
+</beans>

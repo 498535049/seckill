@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:zookeeper="http://www.springframework.org/schema/p"
+
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://code.alibabatech.com/schema/dubbo
+	http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+	">
+	<dubbo:application name="demo-provider"
+		organization="uubee" />
+	<dubbo:registry address="zookeeper://127.0.0.1:2181"
+		protocol="zookeeper"  />
+	<dubbo:protocol name="dubbo" port="20880" />
+	<dubbo:annotation/>
+
+ 	<!--<dubbo:service interface="com.spring.test.manager.UserManagerImpl"
+		ref="userManagerImpl"  />-->
+	<!--<bean id="userManagerImpl" class="com.spring.test.manager.UserManagerImpl" />-->
+<!--	<dubbo:service interface="com.uubee.mngserviceisu.manager.RiskProductsManager"
+		ref="riskProductsManager" timeout="5000" />
+	<dubbo:service interface="com.uubee.mngserviceisu.manager.RiskStrategyManager"				  
+		ref="riskStrategyManager" timeout="5000" />
+	<dubbo:service interface="com.uubee.mngserviceisu.manager.RiskDecisionManager"				  
+		ref="riskDecisionManager" timeout="5000" />
+	<dubbo:service interface="com.uubee.mngserviceisu.manager.RiskStrategyJudgeManager"				  
+		ref="riskStrategyJudgeManager" timeout="5000" />
+ 	<dubbo:service interface="com.uubee.mngserviceisu.manager.RiskReleaseStrategyManager"				 
+		ref="riskReleaseStrategyManager" timeout="5000" /> 
+	<dubbo:service interface="com.uubee.mngserviceisu.manager.RiskLogicSymbolManager"
+				   ref="riskLogicSymbolManager" timeout="5000" />
+	<dubbo:service interface="com.uubee.mngserviceisu.manager.WhitelistManager"				 
+		ref="whitelistManager" timeout="5000" retries="${retries}"/>
+	<dubbo:service interface="com.uubee.mngserviceisu.manager.GroovyScriptsManager"				  
+		ref="groovyScriptsManager" timeout="5000" retries="${retries}"/>
+	<dubbo:service interface="com.uubee.mngserviceisu.manager.RiskrulePackageSnapshotManager"
+		ref="riskrulePackageSnapshotManager" timeout="5000" retries="${retries}"/>
+	<dubbo:service interface="com.uubee.mngserviceisu.manager.RuleNodesSnapshotManager"
+		ref="ruleNodesSnapshotManager" timeout="5000" retries="${retries}"/>
+	<dubbo:service interface="com.uubee.mngserviceisu.manager.RiskRuleSnapshotManager"
+		ref="riskRuleSnapshotManager" timeout="5000" retries="${retries}"/>
+	<dubbo:service interface="com.uubee.mngserviceisu.manager.UserInfoManager"
+				   ref="userInfoManager" timeout="5000" retries="${retries}"/>
+   	<dubbo:service interface="com.uubee.mngserviceisu.manager.ResourceInfoManager"
+  		 ref="resourceInfoManager" timeout="5000" retries="${retries}"/>
+  	<dubbo:service interface="com.uubee.mngserviceisu.manager.RoleInfoManager"
+   		ref="roleInfoManager" timeout="5000" retries="${retries}"/>
+   	<dubbo:service interface="com.uubee.mngserviceisu.manager.RoleResourceManager"
+   		ref="roleResourceManager" timeout="5000" retries="${retries}"/>
+	<dubbo:service interface="com.uubee.mngserviceisu.manager.WhiteListManager1"
+				   ref="whiteListManager1" timeout="5000" retries="${retries}"/> -->
+
+</beans>

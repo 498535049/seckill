@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.1.xsd"
+       default-autowire="byName">
+
+
+    <!--<bean id="onsMQSender" class="com.uubee.mngserviceisu.core.mq.impl.OnsMQSenderImpl" init-method="initialize" destroy-method="destroy">-->
+        <!--<property name="prop">-->
+            <!--<props>-->
+                <!--<prop key="AccessKey">${aliyun.msg.queue.AccessKey}</prop>-->
+                <!--<prop key="SecretKey">${aliyun.msg.queue.SecretKey}</prop>-->
+                <!--<prop key="ProducerId">${aliyun.msg.queue.ProducerId}</prop>-->
+                <!--<prop key="ONSAddr">${aliyun.msg.queue.ONSAddr}</prop>-->
+                <!--<prop key="SendMsgTimeoutMillis">5000</prop>-->
+            <!--</props>-->
+        <!--</property>-->
+    <!--</bean>-->
+    <import resource="common.xml"/>
+    <bean id="producer" class="com.aliyun.openservices.ons.api.bean.ProducerBean"
+          init-method="start">
+        <property name="properties">
+            <map>
+                <entry key="ProducerId" value="PID-214214"/>
+                <entry key="AccessKey" value="LTAIEHwhbVPpTFFs"/>
+                <entry key="SecretKey" value="sIi18usgqaVAa8V9cYtM1i0dBCPHur"/>
+                <entry key="ONSAddr" value="http://onsaddr-internet.aliyun.com/rocketmq/nsaddr4client-internet"/>
+            </map>
+        </property>
+    </bean>
+</beans>
