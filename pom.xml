@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>spring-mybatisplus-test</groupId>
+    <artifactId>spring-mybatisplus-test</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <!-- 1.Spring核心依赖 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>4.3.13.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>4.3.13.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>4.3.13.RELEASE</version>
+        </dependency>
+        <!-- 2.Spring dao依赖 -->
+        <!-- spring-jdbc包括了一些如jdbcTemplate的工具类 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>4.3.13.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>4.3.13.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>4.3.13.RELEASE</version>
+        </dependency>
+        <!-- 3.Spring web依赖 -->
+        <!--<dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>4.3.13.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>4.3.13.RELEASE</version>
+        </dependency>-->
+        <!-- 4.Spring test依赖：方便做单元测试和集成测试 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>4.3.13.RELEASE</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--mybatis-plus开始支持部分-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus</artifactId>
+            <version>2.3</version>
+        </dependency>
+        <!--单元测试-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.0.9</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.5</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.3</version>
+        </dependency>
+        <!--<dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.11</version>
+        </dependency>-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>6.0.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.4.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>1.3.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-redis -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+            <version>1.8.3.RELEASE</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/commons-pool/commons-pool -->
+        <dependency>
+            <groupId>commons-pool</groupId>
+            <artifactId>commons-pool</artifactId>
+            <version>1.6</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.8.1</version>
+        </dependency>
+
+
+
+        <!-- https://mvnrepository.com/artifact/com.alibaba/dubbo -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+            <version>2.5.3</version>
+        </dependency>
+
+        <dependency>
+
+            <groupId>org.apache.zookeeper</groupId>
+
+            <artifactId>zookeeper</artifactId>
+            <version>3.4.6</version>
+
+        </dependency>
+
+        <!--<dependency>
+
+            <groupId>com.github.sgroschupf</groupId>
+
+            <artifactId>zkclient</artifactId>
+
+        </dependency>-->
+        <dependency>
+            <groupId>com.101tec</groupId>
+            <artifactId>zkclient</artifactId>
+            <version>0.2</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.rabbitmq/amqp-client -->
+        <dependency>
+            <groupId>com.rabbitmq</groupId>
+            <artifactId>amqp-client</artifactId>
+            <version>5.3.0</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.aliyun.openservices</groupId>
+            <artifactId>ons-client</artifactId>
+            <version>1.7.8.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.41</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.uubee</groupId>
+            <artifactId>uubee-risk-assist</artifactId>
+            <version>0.0.4.4</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.alibaba</groupId>
+                    <artifactId>fastjson</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!--<dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.8.10</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.8.10</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>2.1</version>
+        </dependency>-->
+
+        <!--<dependency>
+            <groupId>aopalliance</groupId>
+            <artifactId>aopalliance</artifactId>
+            <version>1.0</version>
+        </dependency>-->
+
+       <!-- <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>4.3.5.RELEASE</version>
+        </dependency>-->
+
+        <!--<dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>4.3.13.RELEASE</version>
+        </dependency>-->
+
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>javax.mail-api</artifactId>
+            <version>1.5.6</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.sun.mail/javax.mail -->
+        <!-- https://mvnrepository.com/artifact/com.sun.mail/javax.mail -->
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.5.6</version>
+        </dependency>
+
+
+        <!--身份证识别-->
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore</artifactId>
+            <version>4.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-all</artifactId>
+            <version>5.14.5</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.xbean/xbean-spring -->
+        <dependency>
+            <groupId>org.apache.xbean</groupId>
+            <artifactId>xbean-spring</artifactId>
+            <version>4.4</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.java-websocket/Java-WebSocket -->
+        <dependency>
+            <groupId>org.java-websocket</groupId>
+            <artifactId>Java-WebSocket</artifactId>
+            <version>1.3.8</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-websocket</artifactId>
+            <version>4.3.12.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.websocket</groupId>
+            <artifactId>javax.websocket-api</artifactId>
+            <version>1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>7.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jms</artifactId>
+            <version>4.0.0.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-pool</artifactId>
+            <version>5.9.0</version>
+        </dependency>
+
+
+    </dependencies>
+
+    <profiles>
+
+        <profile>
+            <id>dev</id>
+            <properties>
+                <profile.dubbo.registry.address>192.168.1.8:2181</profile.dubbo.registry.address>
+                <profile.dubbo.protocol.port>22131</profile.dubbo.protocol.port>
+                <profile.dubbo.log4j.file>/home/dubbo/uubee-mngserviceisu/logs/uubee-mngserviceisu.log</profile.dubbo.log4j.file>
+                <profile.log4j.appender.stdout.File>./logs/stdout.log</profile.log4j.appender.stdout.File>
+                <profile.log4j.appender.stderr.File>./logs/stderr.log</profile.log4j.appender.stderr.File>
+                <profile.cache.file>./cache/uubee-mngserviceisu.cache</profile.cache.file>
+                <profile.database_qdbriskisu.url>jdbc:mysql://192.168.1.8:3306/dbriskisu?useUnicode=true&amp;characterEncoding=utf-8</profile.database_qdbriskisu.url>
+                <profile.database_sdbriskisu.url>jdbc:mysql://192.168.1.8:3306/dbriskisu?useUnicode=true&amp;characterEncoding=utf-8</profile.database_sdbriskisu.url>
+                <profile.database_dbriskisu_query.username>root</profile.database_dbriskisu_query.username>
+                <profile.database_dbriskisu_query.password>root</profile.database_dbriskisu_query.password>
+                <profile.database_dbriskisu_store.username>root</profile.database_dbriskisu_store.username>
+                <profile.database_dbriskisu_store.password>root</profile.database_dbriskisu_store.password>
+                <profile.redis.host>192.168.1.11</profile.redis.host>
+                <profile.redis.port>6379</profile.redis.port>
+                <profile.redis.pass></profile.redis.pass>
+                <profile.aliyun.msg.queue.AccessKey>LTAIRW3d2BMAMHpq</profile.aliyun.msg.queue.AccessKey>
+                <profile.aliyun.msg.queue.SecretKey>OomZtJqveRn25JCTehgC43QtRenn9V</profile.aliyun.msg.queue.SecretKey>
+                <profile.aliyun.msg.queue.ProducerId>PID_UB_TEST_DEV</profile.aliyun.msg.queue.ProducerId>
+                <profile.aliyun.msg.queue.Topic>UUBEE_TEST_DEV</profile.aliyun.msg.queue.Topic>
+                <profile.aliyun.msg.queue.ONSAddr>http://onsaddr-internet.aliyun.com/rocketmq/nsaddr4client-internet</profile.aliyun.msg.queue.ONSAddr>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <resources>
+                    <resource>
+                        <directory>src/main/resources</directory>
+                        <filtering>true</filtering>
+                    </resource>
+                </resources>
+            </build>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <profile.dubbo.registry.address>172.16.88.229:2181,172.16.201.167:2181,172.16.88.230:2181</profile.dubbo.registry.address>
+                <profile.dubbo.protocol.port>22131</profile.dubbo.protocol.port>
+                <profile.dubbo.log4j.file>./logs/uubUUbeeRedis501ee-mngserviceisu.log</profile.dubbo.log4j.file>
+                <profile.log4j.appender.stdout.File>./logs/stdout.log</profile.log4j.appender.stdout.File>
+                <profile.log4j.appender.stderr.File>./logs/stderr.log</profile.log4j.appender.stderr.File>
+                <profile.cache.file>./cache/uubee-mngserviceisu.cache</profile.cache.file>
+                <profile.database_qdbriskisu.url>jdbc:mysql://rm-bp1a655336gl4r84l.mysql.rds.aliyuncs.com:3306/dbriskisu?useUnicode=true&amp;characterEncoding=utf-8</profile.database_qdbriskisu.url>
+                <profile.database_sdbriskisu.url>jdbc:mysql://rm-bp1a655336gl4r84l.mysql.rds.aliyuncs.com:3306/dbriskisu?useUnicode=true&amp;characterEncoding=UTF-8</profile.database_sdbriskisu.url>
+                <profile.database_dbriskisu_query.username>riskisu</profile.database_dbriskisu_query.username>
+                <profile.database_dbriskisu_query.password>uubee603_riskisu</profile.database_dbriskisu_query.password>
+                <profile.database_dbriskisu_store.username>riskisu</profile.database_dbriskisu_store.username>
+                <profile.database_dbriskisu_store.password>uubee603_riskisu</profile.database_dbriskisu_store.password>
+                <profile.redis.host>r-bp11f00074b643e4.redis.rds.aliyuncs.com</profile.redis.host>
+                <profile.redis.port>6379</profile.redis.port>
+                <profile.redis.pass>UUbeeRedis501</profile.redis.pass>
+                <profile.aliyun.msg.queue.AccessKey>LTAIRW3d2BMAMHpq</profile.aliyun.msg.queue.AccessKey>
+                <profile.aliyun.msg.queue.SecretKey>OomZtJqveRn25JCTehgC43QtRenn9V</profile.aliyun.msg.queue.SecretKey>
+                <profile.aliyun.msg.queue.ProducerId>PID_UB_TEST_TEST</profile.aliyun.msg.queue.ProducerId>
+                <profile.aliyun.msg.queue.Topic>UUBEE_TEST_TEST</profile.aliyun.msg.queue.Topic>
+                <profile.aliyun.msg.queue.ONSAddr>http://onsaddr-internet.aliyun.com/rocketmq/nsaddr4client-internet</profile.aliyun.msg.queue.ONSAddr>
+            </properties>
+            <build>
+                <resources>
+                    <resource>
+                        <directory>src/main/resources</directory>
+                        <filtering>true</filtering>
+                    </resource>
+                </resources>
+            </build>
+        </profile>
+        <profile>
+            <id>pro</id>
+            <properties>
+                <profile.dubbo.registry.address>172.16.152.58:2181,172.16.152.59:2181,172.16.43.220:2181</profile.dubbo.registry.address>
+                <profile.dubbo.protocol.port>22131</profile.dubbo.protocol.port>
+                <profile.dubbo.log4j.file>/u01/dubbo/uubee-mngserviceisu/logs/uubee-mngserviceisu.log</profile.dubbo.log4j.file>
+                <profile.log4j.appender.stdout.File>/u01/dubbo/uubee-mngserviceisu/logs/stdout.log</profile.log4j.appender.stdout.File>
+                <profile.log4j.appender.stderr.File>/u01/dubbo/uubee-mngserviceisu/logs/stderr.log</profile.log4j.appender.stderr.File>
+                <profile.cache.file>/u01/dubbo/cache/uubee-mngserviceisu.cache</profile.cache.file>
+                <profile.database_qdbriskisu.url>jdbc:mysql://rm-bp1j435h2r386n358.mysql.rds.aliyuncs.com:3306/dbriskisu?useUnicode=true&amp;characterEncoding=utf-8</profile.database_qdbriskisu.url>
+                <profile.database_sdbriskisu.url>jdbc:mysql://rm-bp1j435h2r386n358.mysql.rds.aliyuncs.com:3306/dbriskisu?useUnicode=true&amp;characterEncoding=utf-8</profile.database_sdbriskisu.url>
+                <profile.database_dbriskisu_query.username>riskisu</profile.database_dbriskisu_query.username>
+                <profile.database_dbriskisu_query.password>Billion_riskisu</profile.database_dbriskisu_query.password>
+                <profile.database_dbriskisu_store.username>riskisu</profile.database_dbriskisu_store.username>
+                <profile.database_dbriskisu_store.password>Billion_riskisu</profile.database_dbriskisu_store.password>
+                <profile.redis.host>r-bp133d1c91c667d4.redis.rds.aliyuncs.com</profile.redis.host>
+                <profile.redis.port>6379</profile.redis.port>
+                <profile.redis.pass>Beilian603RedisDB</profile.redis.pass>
+                <profile.aliyun.msg.queue.AccessKey>LTAIv1FGSlmXhDc4</profile.aliyun.msg.queue.AccessKey>
+                <profile.aliyun.msg.queue.SecretKey>oeTMvaMYr068iCRJ0YWva3oQvmCVf4</profile.aliyun.msg.queue.SecretKey>
+                <profile.aliyun.msg.queue.ProducerId>PID_ISU_PRO</profile.aliyun.msg.queue.ProducerId>
+                <profile.aliyun.msg.queue.Topic>BILLION_ISU_PRO</profile.aliyun.msg.queue.Topic>
+                <profile.aliyun.msg.queue.ONSAddr>http://onsaddr-internet.aliyun.com/rocketmq/nsaddr4client-internet</profile.aliyun.msg.queue.ONSAddr>
+            </properties>
+            <build>
+                <resources>
+                    <resource>
+                        <directory>src/main/resources</directory>
+                        <filtering>true</filtering>
+                    </resource>
+                </resources>
+            </build>
+        </profile>
+    </profiles>
+</project>
